@@ -2,7 +2,7 @@
 
 class Interview
 {
-	public $title = 'Interview test';
+	public static $title = 'Interview test';
 }
 
 $lipsum = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus incidunt, quasi aliquid, quod officia commodi magni eum? Provident, sed necessitatibus perferendis nisi illum quos, incidunt sit tempora quasi, pariatur natus.';
@@ -69,9 +69,9 @@ $person = $_POST['person'];
 		<tbody>
 			<?php foreach ($people as $person): ?>
 				<tr>
-					<td><?=$person->first_name;?></td>
-					<td><?=$person->last_name;?></td>
-					<td><?=$person->email;?></td>
+					<td><?=$person['first_name'];?></td>
+					<td><?=$person['last_name'];?></td>
+					<td><?=$person['email'];?></td>
 				</tr>
 			<?php endforeach; ?>
 		</tbody>
