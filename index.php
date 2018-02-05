@@ -1,7 +1,7 @@
 <?php
 
-class Interview
-{
+class Interview {
+	//was missing static
 	public static $title = 'Interview test';
 }
 
@@ -34,29 +34,30 @@ $person = $_POST['person'];
 
 	<?php
 	// Print 10 times
-	for ($i=10; $i<0; $i++) {
-		echo '<p>'+$lipsum+'</p>';
+	//switch the 0 and 10 in for loop
+	for ($i=0; $i<10; $i++) {
+		//was wrong format for echo
+		echo "<p> $lipsum </p>";
 	}
 	?>
 
-
 	<hr>
 
-
-	<form method="get" action="<?=$_SERVER['REQUEST_URI'];?>">
-		<p><label for="firstName">First name</label> <input type="text" name="person[first_name]" id="firstName"></p>
-		<p><label for="lastName">Last name</label> <input type="text" name="person[last_name]" id="lastName"></p>
-		<p><label for="email">Email</label> <input type="text" name="person[email]" id="email"></p>
+	<!-- use post instead of get -->
+	<form method="post" action="<?=$_SERVER['REQUEST_URI'];?>">
+		<!-- make inputs required -->
+		<p><label for="firstName">First name</label> <input type="text" name="person[first_name]" id="firstName" required></p>
+		<p><label for="lastName">Last name</label> <input type="text" name="person[last_name]" id="lastName" required></p>
+		<p><label for="email">Email</label> <input type="text" name="person[email]" id="email" required></p>
 		<p><input type="submit" value="Submit" /></p>
 	</form>
 
 	<?php if ($person): ?>
-		<p><strong>Person</strong> <?=$person['first_name'];?>, <?=$person['last_name'];?>, <?=$person['email'];?></p>
+		<!-- filter output -->
+		<p><strong>Person</strong> <?=htmlspecialchars($person['first_name']);?>, <?=htmlspecialchars($person['last_name']);?>, <?=htmlspecialchars($person['email']);?></p>
 	<?php endif; ?>
 
-
 	<hr>
-
 
 	<table>
 		<thead>
@@ -69,9 +70,11 @@ $person = $_POST['person'];
 		<tbody>
 			<?php foreach ($people as $person): ?>
 				<tr>
-					<td><?=$person['first_name'];?></td>
-					<td><?=$person['last_name'];?></td>
-					<td><?=$person['email'];?></td>
+					<!-- had wrong format for array -->
+					<!-- filter output -->
+					<td><?=htmlspecialchars($person['first_name']);?></td>
+					<td><?=htmlspecialchars($person['last_name']);?></td>
+					<td><?=htmlspecialchars($person['email']);?></td>
 				</tr>
 			<?php endforeach; ?>
 		</tbody>
